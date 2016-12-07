@@ -19,7 +19,10 @@ namespace MVCBiblioteka.Models
             return userIdentity;
         }
 
-        public int Age { get; set; }
+        public string name { get; set; }
+        public string surname { get; set; }
+        public string dateBirth { get; set; }
+        public string phone { get; set; }
 
         public virtual ICollection<Lend> Lends { get; set; }
     }
@@ -39,7 +42,6 @@ namespace MVCBiblioteka.Models
         public DbSet<Book> Books { get; set; }
         public DbSet<Lend> Lends { get; set; }
         public DbSet<Publisher> Publishers { get; set; }
-        public DbSet<Address> Addresses { get; set; }
         public DbSet<Author> Authors { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Cart> Carts { get; set; }

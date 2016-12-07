@@ -202,6 +202,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\ShoppingCartController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -249,9 +250,20 @@
     <Compile Include="Migrations\201612061707376_checkout.Designer.cs">
       <DependentUpon>201612061707376_checkout.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612071137478_heh.cs" />
+    <Compile Include="Migrations\201612071137478_heh.Designer.cs">
+      <DependentUpon>201612071137478_heh.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612071222529_heh1.cs" />
+    <Compile Include="Migrations\201612071222529_heh1.Designer.cs">
+      <DependentUpon>201612071222529_heh1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612071301520_heh2.cs" />
+    <Compile Include="Migrations\201612071301520_heh2.Designer.cs">
+      <DependentUpon>201612071301520_heh2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\Address.cs" />
     <Compile Include="Models\Author.cs" />
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\Cart.cs" />
@@ -336,6 +348,12 @@
     <Content Include="Views\ShoppingCart\Index.cshtml" />
     <Content Include="Views\Checkout\AddressAndPayment.cshtml" />
     <Content Include="Views\Checkout\Complete.cshtml" />
+    <Content Include="Views\ShoppingCart\CartSummary.cshtml" />
+    <Content Include="Views\Users\Create.cshtml" />
+    <Content Include="Views\Users\Delete.cshtml" />
+    <Content Include="Views\Users\Details.cshtml" />
+    <Content Include="Views\Users\Edit.cshtml" />
+    <Content Include="Views\Users\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -382,6 +400,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201612061707376_checkout.resx">
       <DependentUpon>201612061707376_checkout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612071137478_heh.resx">
+      <DependentUpon>201612071137478_heh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612071222529_heh1.resx">
+      <DependentUpon>201612071222529_heh1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612071301520_heh2.resx">
+      <DependentUpon>201612071301520_heh2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
