@@ -8,17 +8,17 @@ using System.Web.Mvc;
 
 namespace MVCBiblioteka.Controllers
 {
-    public class ShoppingCartController : Controller
+    public class BooksCartController : Controller
     {
         ApplicationDbContext storeDB = new ApplicationDbContext();
         //
         // GET: /ShoppingCart/
         public ActionResult Index()
         {
-            var cart = ShoppingCart.GetCart(this.HttpContext);
+            var cart = BooksCart.GetCart(this.HttpContext);
 
             // Set up our ViewModel
-            var viewModel = new ShoppingCartViewModel
+            var viewModel = new BooksCartViewModel
             {
                 CartItems = cart.GetCartItems(),
                 CartTotal = cart.GetTotal()
@@ -35,7 +35,7 @@ namespace MVCBiblioteka.Controllers
                 .Single(book => book.BookID == id);
 
             // Add it to the shopping cart
-            var cart = ShoppingCart.GetCart(this.HttpContext);
+            var cart = BooksCart.GetCart(this.HttpContext);
 
             cart.AddToCart(addedBook);
 
@@ -48,7 +48,7 @@ namespace MVCBiblioteka.Controllers
         public ActionResult RemoveFromCart(int id)
         {
             // Remove the item from the cart
-            var cart = ShoppingCart.GetCart(this.HttpContext);
+            var cart = BooksCart.GetCart(this.HttpContext);
 
             // Get the name of the album to display confirmation
             string bookName = storeDB.Carts.Single(item => item.RecordID == id).Book.title;
@@ -57,7 +57,7 @@ namespace MVCBiblioteka.Controllers
             int itemCount = cart.RemoveFromCart(id);
 
             // Display the confirmation message
-            var results = new ShoppingCartRemoveViewModel
+            var results = new BooksCartRemoveViewModel
             {
                 Message = Server.HtmlEncode(bookName) +
                     " has been removed from your shopping cart.",
@@ -73,7 +73,7 @@ namespace MVCBiblioteka.Controllers
         [ChildActionOnly]
         public ActionResult CartSummary()
         {
-            var cart = ShoppingCart.GetCart(this.HttpContext);
+            var cart = BooksCart.GetCart(this.HttpContext);
 
             ViewData["CartCount"] = cart.GetCount();
             return PartialView("CartSummary");

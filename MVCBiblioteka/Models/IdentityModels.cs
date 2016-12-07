@@ -24,7 +24,7 @@ namespace MVCBiblioteka.Models
         public string dateBirth { get; set; }
         public string phone { get; set; }
 
-        public virtual ICollection<Lend> Lends { get; set; }
+        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
@@ -40,16 +40,15 @@ namespace MVCBiblioteka.Models
         }
 
         public DbSet<Book> Books { get; set; }
-        public DbSet<Lend> Lends { get; set; }
         public DbSet<Publisher> Publishers { get; set; }
         public DbSet<Author> Authors { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Cart> Carts { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderDetail> OrderDetails { get; set; }
-        public DbSet<ShoppingCart> ShoppingCarts { get; set; }
-        public DbSet<ShoppingCartViewModel> ShoppingCartsViewModel { get; set; }
-        public DbSet<ShoppingCartRemoveViewModel> ShoppingCartsRemoveViewModel { get; set; }
+        public DbSet<BooksCart> ShoppingCarts { get; set; }
+        public DbSet<BooksCartViewModel> ShoppingCartsViewModel { get; set; }
+        public DbSet<BooksCartRemoveViewModel> ShoppingCartsRemoveViewModel { get; set; }
     }
 
     //Klasa dodana

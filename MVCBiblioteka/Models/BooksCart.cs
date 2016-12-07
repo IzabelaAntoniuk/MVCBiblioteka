@@ -7,20 +7,20 @@ using System.Web.Mvc;
 
 namespace MVCBiblioteka.Models
 {
-    public partial class ShoppingCart
+    public partial class BooksCart
     {
         ApplicationDbContext storeDB = new ApplicationDbContext();
         [Key]
-        public string ShoppingCartID { get; set; }
+        public string BooksCartID { get; set; }
         public const string CartSessionKey = "CartId";
-        public static ShoppingCart GetCart(HttpContextBase context)
+        public static BooksCart GetCart(HttpContextBase context)
         {
-            var cart = new ShoppingCart();
-            cart.ShoppingCartID = cart.GetCartId(context);
+            var cart = new BooksCart();
+            cart.BooksCartID = cart.GetCartId(context);
             return cart;
         }
         // Helper method to simplify shopping cart calls
-        public static ShoppingCart GetCart(Controller controller)
+        public static BooksCart GetCart(Controller controller)
         {
             return GetCart(controller.HttpContext);
         }
@@ -28,7 +28,7 @@ namespace MVCBiblioteka.Models
         {
             // Get the matching cart and album instances
             var cartItem = storeDB.Carts.SingleOrDefault(
-                c => c.CartID == ShoppingCartID
+                c => c.CartID == BooksCartID
                 && c.BookID == book.BookID);
 
             if (cartItem == null)
@@ -37,7 +37,7 @@ namespace MVCBiblioteka.Models
                 cartItem = new Cart
                 {
                     BookID = book.BookID,
-                    CartID = ShoppingCartID,
+                    CartID = BooksCartID,
                     Count = 1,
                     DateCreated = DateTime.Now
                 };
@@ -56,7 +56,7 @@ namespace MVCBiblioteka.Models
         {
             // Get the cart
             var cartItem = storeDB.Carts.Single(
-                cart => cart.CartID == ShoppingCartID
+                cart => cart.CartID == BooksCartID
                 && cart.RecordID == id);
 
             int itemCount = 0;
@@ -80,7 +80,7 @@ namespace MVCBiblioteka.Models
         public void EmptyCart()
         {
             var cartItems = storeDB.Carts.Where(
-                cart => cart.CartID == ShoppingCartID);
+                cart => cart.CartID == BooksCartID);
 
             foreach (var cartItem in cartItems)
             {
@@ -92,13 +92,13 @@ namespace MVCBiblioteka.Models
         public List<Cart> GetCartItems()
         {
             return storeDB.Carts.Where(
-                cart => cart.CartID == ShoppingCartID).ToList();
+                cart => cart.CartID == BooksCartID).ToList();
         }
         public int GetCount()
         {
             // Get the count of each item in the cart and sum them up
             int? count = (from cartItems in storeDB.Carts
-                          where cartItems.CartID == ShoppingCartID
+                          where cartItems.CartID == BooksCartID
                           select (int?)cartItems.Count).Sum();
             // Return 0 if all entries are null
             return count ?? 0;
@@ -109,7 +109,7 @@ namespace MVCBiblioteka.Models
             // the current price for each of those albums in the cart
             // sum all album price totals to get the cart total
             decimal? total = (from cartItems in storeDB.Carts
-                              where cartItems.CartID == ShoppingCartID
+                              where cartItems.CartID == BooksCartID
                               select (int?)cartItems.Count *
                               cartItems.Book.AuthorID).Sum();
 
@@ -128,6 +128,8 @@ namespace MVCBiblioteka.Models
                 {
                     BookID = item.BookID,
                     OrderID = order.OrderID,
+                    lendDate = DateTime.Now.Date,
+                    returnDate = DateTime.Now.AddDays(14),
                    // UnitPrice = item.Book.,
                     Quantity = item.Count
                 };
@@ -172,7 +174,7 @@ namespace MVCBiblioteka.Models
         public void MigrateCart(string userName)
         {
             var shoppingCart = storeDB.Carts.Where(
-                c => c.CartID == ShoppingCartID);
+                c => c.CartID == BooksCartID);
 
             foreach (Cart item in shoppingCart)
             {

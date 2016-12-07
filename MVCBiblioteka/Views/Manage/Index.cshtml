@@ -1,4 +1,5 @@
 ﻿@model MVCBiblioteka.Models.IndexViewModel
+
 @{
     ViewBag.Title = "Manage";
 }
@@ -84,4 +85,16 @@
                 }*@
         </dd>
     </dl>
-</div>
+
+    @*@Html.ActionLink("Moje zamówienia", "Details", new { id = item. })
+    @Html.ActionLink("Details", "Details", new { id = item.BookID }) |*@
+
+            <td>
+                @*@Html.ActionLink("Edit", "Edit", new { id = item.BookID }) |
+                
+                @Html.ActionLink("Delete", "Delete", new { id = item.BookID })*@
+
+
+                @Html.ActionLink("getOrders", "getOrders", "Manage") |
+            </td>
+    }

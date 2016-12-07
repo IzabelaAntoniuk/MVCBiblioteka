@@ -6,9 +6,9 @@ using System.Web;
 
 namespace MVCBiblioteka.ViewModels
 {
-    public class ShoppingCartViewModel
+    public class BooksCartViewModel
     {
-        public string ShoppingCartViewModelID { get; set; }
+        public string BooksCartViewModelID { get; set; }
         public List<Cart> CartItems { get; set; }
         public decimal CartTotal { get; set; }
     }

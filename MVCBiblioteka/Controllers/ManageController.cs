@@ -7,6 +7,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using MVCBiblioteka.Models;
+using System.Net;
 
 namespace MVCBiblioteka.Controllers
 {
@@ -15,6 +16,7 @@ namespace MVCBiblioteka.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private ApplicationDbContext libraryDB = new ApplicationDbContext();
 
         public ManageController()
         {
@@ -333,7 +335,20 @@ namespace MVCBiblioteka.Controllers
             base.Dispose(disposing);
         }
 
-#region Helpers
+        public ActionResult getOrders()
+        {
+            //var orderDetails = libraryDB.OrderDetails.Include(o => o.Book).Include(o => o.Order).Include(o => o.User);
+            //return View(orderDetails.ToList());
+
+
+            // Retrieve Genre and its Associated Albums from database
+            var userId = User.Identity.GetUserId();
+            var genreModel = libraryDB.Users.Where(u => u.Id == userId).Select(o => o.OrderDetails);
+
+            return View(genreModel.AsEnumerable().ToList());
+        }
+
+        #region Helpers
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MVCBiblioteka.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,23 +9,48 @@ namespace MVCBiblioteka.Controllers
 {
     public class HomeController : Controller
     {
+        ApplicationDbContext libraryDB = new ApplicationDbContext();
+        //
+        // GET: /Store/
+
         public ActionResult Index()
         {
-            return View();
+            var genres = libraryDB.Categories.ToList();
+
+            return View(genres);
         }
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
+        //
+        // GET: /Store/Browse?genre=Disco
 
-            return View();
+        public ActionResult Browse(string genre)
+        {
+            // Retrieve Genre and its Associated Albums from database
+            var genreModel = libraryDB.Categories.Include("Books")
+                .Single(g => g.name == genre);
+
+            return View(genreModel);
         }
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
+        //
+        // GET: /Store/Details/5
 
-            return View();
+        public ActionResult Details(int id)
+        {
+            var album = libraryDB.Books.Find(id);
+
+            return View(album);
+        }
+
+        //
+        // GET: /Store/GenreMenu
+
+        [ChildActionOnly]
+        public ActionResult GenreMenu()
+        {
+            var genres = libraryDB.Categories.ToList();
+
+            return PartialView(genres);
         }
     }
 }

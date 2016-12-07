@@ -6,6 +6,11 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <link href="@Url.Content("~/Content/Site.css")"
+          rel="stylesheet"
+          type="text/css" />
+    <script src="@Url.Content("~/Scripts/jquery-1.10.2.min.js")"
+            type="text/javascript"></script>
 
 </head>
 <body>
@@ -22,13 +27,16 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li><a href="@Url.Content("~/Home/")">Store</a></li>
+                    <li>@{Html.RenderAction("CartSummary", "BooksCart");}</li>
+                    <li><a href="@Url.Content("~/Users/")">Admin</a>
+                    </li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>
+    @*@{Html.RenderAction("GenreMenu", "Home");}*@
     <div class="container body-content">
         @RenderBody()
         <hr />

@@ -44,7 +44,7 @@ namespace MVCBiblioteka.Controllers
                     storeDB.Orders.Add(order);
                     storeDB.SaveChanges();
                     //Process the order
-                    var cart = ShoppingCart.GetCart(this.HttpContext);
+                    var cart = BooksCart.GetCart(this.HttpContext);
                     cart.CreateOrder(order);
 
                     return RedirectToAction("Complete",

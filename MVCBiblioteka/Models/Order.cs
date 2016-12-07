@@ -47,6 +47,9 @@ namespace MVCBiblioteka.Models
         [Required(ErrorMessage = "Email Address is required")]
         [DisplayName("Email Address")]
 
+        //public DateTime lendDate { get; set; }
+        //public DateTime returnDate { get; set; }
+
         [RegularExpression(@"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}",
             ErrorMessage = "Email is is not valid.")]
         [DataType(DataType.EmailAddress)]

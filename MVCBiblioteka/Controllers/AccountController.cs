@@ -431,10 +431,10 @@ namespace MVCBiblioteka.Controllers
         private void MigrateShoppingCart(string UserName)
         {
             // Associate shopping cart items with logged-in user
-            var cart = ShoppingCart.GetCart(this.HttpContext);
+            var cart = BooksCart.GetCart(this.HttpContext);
 
             cart.MigrateCart(UserName);
-            Session[ShoppingCart.CartSessionKey] = UserName;
+            Session[BooksCart.CartSessionKey] = UserName;
         }
 
         #region Helpers

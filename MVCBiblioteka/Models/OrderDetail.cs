@@ -10,9 +10,13 @@ namespace MVCBiblioteka.Models
         public int OrderDetailID { get; set; }
         public int OrderID { get; set; }
         public int BookID { get; set; }
+        public string UserID { get; set; }
         public int Quantity { get; set; }
-        public decimal UnitPrice { get; set; }
+        public DateTime lendDate { get; set; }
+        public DateTime returnDate { get; set; }
+
         public virtual Book Book { get; set; }
         public virtual Order Order { get; set; }
+        public virtual ApplicationUser User { get; set; }
     }
 }
