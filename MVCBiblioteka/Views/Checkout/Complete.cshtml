@@ -1,13 +1,9 @@
 ﻿@model int
 
 @{
-    ViewBag.Title = "Complete";
+    ViewBag.Title = "Książka wypożyczona!";
 }
 
-<h2>Checkout Complete</h2>
-<p>Thanks for your order! Your order number is: @Model</p>
-<p>
-    How about shopping for some more music in our
-    @Html.ActionLink("store",
-"Index", "Home")
-</p>
+<h2>Książka wypożyczona!</h2>
+<p>Dziękujemy za wypożyczenie naszej książki. Życzymy owocnej lektury :)
+    Numer Twojego wypożyczenia: @Model</p>

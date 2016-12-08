@@ -31,24 +31,25 @@
         });
     });
 </script>
-<h3>
-    <em>Review</em> your cart:
-</h3>
+<h2>Przejrzyj swój koszyk:</h2>
 <p class="button">
-    @Html.ActionLink("Checkout >> ", "AddressAndPayment", "Checkout")
+    @Html.ActionLink("Przejdź do potwierdzenia ", "AddressAndPayment", "Checkout")
 </p>
 <div id="update-message">
 </div>
-<table>
+<table class="table">
     <tr>
         <th>
-            Album Name
+            Nazwa książki
         </th>
         <th>
-            Price (each)
+            Data wypożyczenia
         </th>
         <th>
-            Quantity
+            Data zwrotu
+        </th>
+        <th>
+            Ilość
         </th>
         <th></th>
     </tr>
@@ -60,7 +61,10 @@
 "Details", "Books", new { id = item.BookID }, null)
             </td>
             <td>
-                @item.Book.premiereDate
+                @DateTime.Now.ToString("dd.MM.yyy")
+            </td>
+            <td>
+                @DateTime.Now.AddDays(14).ToString("dd.MM.yyy")
             </td>
             <td id="item-count-@item.RecordID">
                 @item.Count
@@ -68,19 +72,19 @@
             <td>
                 <a href="#" class="RemoveLink"
                    data-id="@item.RecordID">
-                    Remove from cart
+                    Usuń z koszyka
                 </a>
             </td>
         </tr>
     }
     <tr>
         <td>
-            Total
+            <b>Łącznie</b>
         </td>
         <td></td>
         <td></td>
         <td id="cart-total">
-            @Model.CartTotal
+            <b>@Model.CartTotal</b>
         </td>
     </tr>
 </table>

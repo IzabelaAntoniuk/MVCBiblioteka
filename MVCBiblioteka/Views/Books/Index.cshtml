@@ -1,14 +1,17 @@
 ﻿@model IEnumerable<MVCBiblioteka.Models.Book>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Lista książek";
 }
 
-<h2>Index</h2>
-
+<h2>Lista książek</h2>
+@if (User.IsInRole("Administrator"))
+{
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Stwórz nową", "Create")
 </p>
+}
+
 <table class="table">
     <tr>
         <th>
@@ -41,9 +44,9 @@
             @Html.DisplayFor(modelItem => item.state)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.BookID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.BookID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.BookID })
+            @Html.ActionLink("Edytuj", "Edit", new { id=item.BookID }) |
+            @Html.ActionLink("Szczegóły", "Details", new { id=item.BookID }) |
+            @Html.ActionLink("Usuń", "Delete", new { id=item.BookID })
         </td>
     </tr>
 }

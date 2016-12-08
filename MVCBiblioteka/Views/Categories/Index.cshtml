@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<MVCBiblioteka.Models.Category>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Lista gatunków";
 }
 
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Stwórz nowy", "Create")
 </p>
 <table class="table">
     <tr>
@@ -23,9 +23,9 @@
             @Html.DisplayFor(modelItem => item.name)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CategoryID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.CategoryID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CategoryID })
+            @Html.ActionLink("Edytuj", "Edit", new { id=item.CategoryID }) |
+            @Html.ActionLink("Szczegóły", "Details", new { id=item.CategoryID }) |
+            @Html.ActionLink("Usuń", "Delete", new { id=item.CategoryID })
         </td>
     </tr>
 }

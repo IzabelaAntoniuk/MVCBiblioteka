@@ -123,5 +123,34 @@ namespace MVCBiblioteka.Controllers
             }
             base.Dispose(disposing);
         }
+
+        //
+        // GET: /Store/Browse?genre=Disco
+
+        public ActionResult Browse(string genre)
+        {
+            // Retrieve Genre and its Associated Albums from database
+            var genreModel = db.Categories.Include("Books")
+                .Single(g => g.name == genre);
+
+            return View(genreModel);
+        }
+
+        //
+        // GET: /Store/Details/5
+
+        public ActionResult Details(int id)
+        {
+            var album = db.Books.Find(id);
+
+            return View(album);
+        }
+
+        public ActionResult CategoriesList()
+        {
+            var genres = db.Categories.ToList();
+
+            return View(genres);
+        }
     }
 }

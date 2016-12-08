@@ -16,7 +16,7 @@ namespace MVCBiblioteka.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-        private ApplicationDbContext libraryDB = new ApplicationDbContext();
+        private ApplicationDbContext db = new ApplicationDbContext();
 
         public ManageController()
         {
@@ -342,10 +342,35 @@ namespace MVCBiblioteka.Controllers
 
 
             // Retrieve Genre and its Associated Albums from database
-            var userId = User.Identity.GetUserId();
-            var genreModel = libraryDB.Users.Where(u => u.Id == userId).Select(o => o.OrderDetails);
+            //var userId = User.Identity.GetUserId();
+            //var genreModel = libraryDB.Users.Where(u => u.Id == userId).Select(o => o.OrderDetails);
 
-            return View(genreModel.AsEnumerable().ToList());
+            //return View(genreModel.AsEnumerable().ToList());
+
+            var userId = User.Identity.GetUserId();
+            if (userId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var order = db.OrderDetails.Where(d => d.UserID == userId);
+           // Category category = db.Categories.Find(id);
+
+            return View(order.ToList());
+        }
+
+        // GET: OrderDetails/Details/5
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            OrderDetail orderDetail = db.OrderDetails.Find(id);
+            if (orderDetail == null)
+            {
+                return HttpNotFound();
+            }
+            return View(orderDetail);
         }
 
         #region Helpers

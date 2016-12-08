@@ -11,7 +11,7 @@ namespace MVCBiblioteka.Controllers
     public class CheckoutController : Controller
     {
         ApplicationDbContext storeDB = new ApplicationDbContext();
-        const string PromoCode = "FREE";
+        const string PromoCode = "HURA";
 
         //
         // GET: /Checkout/AddressAndPayment

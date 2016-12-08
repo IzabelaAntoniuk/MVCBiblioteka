@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<MVCBiblioteka.Models.OrderDetail>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Szczegóły zamówienia";
 }
 
-<h2>Index</h2>
+<h2>Szczegóły zamówienia</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Stwórz nowe", "Create")
 </p>
 <table class="table">
     <tr>
@@ -53,10 +53,10 @@
             @Html.DisplayFor(modelItem => item.returnDate)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.OrderDetailID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.OrderDetailID }) |
-            @Html.ActionLink("getOrders", "getOrders", new { id = item.OrderDetailID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.OrderDetailID })
+            @Html.ActionLink("Edytuj", "Edit", new { id=item.OrderDetailID }) |
+            @Html.ActionLink("Szczegóły", "Details", new { id=item.OrderDetailID }) |
+            @Html.ActionLink("Twoje zamówienia", "getOrders", new { id = item.OrderDetailID }) |
+            @Html.ActionLink("Usuń", "Delete", new { id=item.OrderDetailID })
         </td>
     </tr>
 }

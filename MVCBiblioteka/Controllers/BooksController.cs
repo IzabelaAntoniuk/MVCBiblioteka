@@ -38,6 +38,7 @@ namespace MVCBiblioteka.Controllers
         }
 
         // GET: Books/Create
+        [Authorize(Roles = "Administrator")]
         public ActionResult Create()
         {
             return View();
