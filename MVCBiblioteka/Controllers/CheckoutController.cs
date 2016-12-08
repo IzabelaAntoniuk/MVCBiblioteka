@@ -1,4 +1,5 @@
-﻿using MVCBiblioteka.Models;
+﻿using Microsoft.AspNet.Identity;
+using MVCBiblioteka.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,8 +38,9 @@ namespace MVCBiblioteka.Controllers
                 }
                 else
                 {
-                    order.Username = User.Identity.Name;
+                    order.UserID = User.Identity.GetUserId();
                     order.OrderDate = DateTime.Now;
+                    order.Username = User.Identity.Name;
 
                     //Save Order
                     storeDB.Orders.Add(order);
@@ -73,6 +75,7 @@ namespace MVCBiblioteka.Controllers
             }
             else
             {
+                ModelState.Clear();
                 return View("Error");
             }
         }

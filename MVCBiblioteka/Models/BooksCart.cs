@@ -117,7 +117,6 @@ namespace MVCBiblioteka.Models
         }
         public int CreateOrder(Order order)
         {
-            decimal orderTotal = 0;
 
             var cartItems = GetCartItems();
             // Iterate over the items in the cart, 
@@ -130,8 +129,10 @@ namespace MVCBiblioteka.Models
                     OrderID = order.OrderID,
                     lendDate = DateTime.Now.Date,
                     returnDate = DateTime.Now.AddDays(14),
-                   // UnitPrice = item.Book.,
-                    Quantity = item.Count
+                    UserID = order.UserID,
+                // UnitPrice = item.Book.,
+                Quantity = item.Count
+                    
                 };
                 // Set the order total of the shopping cart
                // orderTotal += (item.Count * item.Album.Price);
@@ -139,8 +140,6 @@ namespace MVCBiblioteka.Models
                 storeDB.OrderDetails.Add(orderDetail);
 
             }
-            // Set the order's total to the orderTotal count
-            order.Total = orderTotal;
 
             // Save the order
             storeDB.SaveChanges();

@@ -5,6 +5,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.Collections.Generic;
 using MVCBiblioteka.ViewModels;
+using System.ComponentModel.DataAnnotations;
 
 namespace MVCBiblioteka.Models
 {
@@ -19,9 +20,14 @@ namespace MVCBiblioteka.Models
             return userIdentity;
         }
 
+        [Display(Name = "Imię: ")]
         public string name { get; set; }
+        [Display(Name = "Nazwisko: ")]
         public string surname { get; set; }
+        [Display(Name = "Data urodzenia: ")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy.MM.dd}")]
         public string dateBirth { get; set; }
+        [Display(Name = "Telefon: ")]
         public string phone { get; set; }
 
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }

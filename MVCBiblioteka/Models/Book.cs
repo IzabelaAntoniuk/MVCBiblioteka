@@ -14,6 +14,7 @@ namespace MVCBiblioteka.Models
         public string title { get; set; }
         [Required]
         [Display(Name = "Data premiery: ")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy.MM.dd}")]
         public DateTime premiereDate { get; set; }
         [Required]
         [Display(Name = "Wydawnictwo: ")]
@@ -22,7 +23,7 @@ namespace MVCBiblioteka.Models
         [Display(Name = "Autor: ")]
         public int AuthorID { get; set; }
         [Required]
-        [Display(Name = "Kategoria: ")]
+        [Display(Name = "Gatunek: ")]
         public int CategoryID { get; set; }
         [Required]
         [Display(Name = "Opis: ")]
@@ -32,7 +33,6 @@ namespace MVCBiblioteka.Models
         public string state { get; set; }
         [Required]
         public string ISBN { get; set; }
-        public int LendID { get; set; }
 
         public virtual ICollection<Publisher> Publishers { get; set; }
         public virtual ICollection<Author> Authors { get; set; }

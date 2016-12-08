@@ -15,17 +15,15 @@
         @Html.EditorForModel()
     </fieldset>
     <fieldset>
-        <legend>Payment</legend>
+        <br/><br/>
         <p>
             Wpisz kod potwierdzający wypożyczenie: "HURA"
         </p>
-        <div class="editor-label">
-            @Html.Label("Promo Code")
-        </div>
         <div class="editor-field">
             @Html.TextBox("PromoCode")
         </div>
     </fieldset>
+    <br/>
 
     <input type="submit" value="Wypożycz" />
 }

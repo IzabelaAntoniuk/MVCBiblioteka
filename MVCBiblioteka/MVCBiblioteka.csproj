@@ -304,6 +304,34 @@
     <Compile Include="Migrations\201612080250239_category.Designer.cs">
       <DependentUpon>201612080250239_category.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612080350473_bigMigration.cs" />
+    <Compile Include="Migrations\201612080350473_bigMigration.Designer.cs">
+      <DependentUpon>201612080350473_bigMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612080353280_update.cs" />
+    <Compile Include="Migrations\201612080353280_update.Designer.cs">
+      <DependentUpon>201612080353280_update.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612080430580_update1.cs" />
+    <Compile Include="Migrations\201612080430580_update1.Designer.cs">
+      <DependentUpon>201612080430580_update1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612080432540_update2.cs" />
+    <Compile Include="Migrations\201612080432540_update2.Designer.cs">
+      <DependentUpon>201612080432540_update2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612080441151_update3.cs" />
+    <Compile Include="Migrations\201612080441151_update3.Designer.cs">
+      <DependentUpon>201612080441151_update3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612080454216_update4.cs" />
+    <Compile Include="Migrations\201612080454216_update4.Designer.cs">
+      <DependentUpon>201612080454216_update4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612080457117_update5.cs" />
+    <Compile Include="Migrations\201612080457117_update5.Designer.cs">
+      <DependentUpon>201612080457117_update5.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Author.cs" />
@@ -498,6 +526,27 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201612080250239_category.resx">
       <DependentUpon>201612080250239_category.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612080350473_bigMigration.resx">
+      <DependentUpon>201612080350473_bigMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612080353280_update.resx">
+      <DependentUpon>201612080353280_update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612080430580_update1.resx">
+      <DependentUpon>201612080430580_update1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612080432540_update2.resx">
+      <DependentUpon>201612080432540_update2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612080441151_update3.resx">
+      <DependentUpon>201612080441151_update3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612080454216_update4.resx">
+      <DependentUpon>201612080454216_update4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612080457117_update5.resx">
+      <DependentUpon>201612080457117_update5.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

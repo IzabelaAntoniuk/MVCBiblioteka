@@ -60,7 +60,7 @@ namespace MVCBiblioteka.Controllers
             var results = new BooksCartRemoveViewModel
             {
                 Message = Server.HtmlEncode(bookName) +
-                    " has been removed from your shopping cart.",
+                    " - usunięto z koszyka.",
                 CartTotal = cart.GetTotal(),
                 CartCount = cart.GetCount(),
                 ItemCount = itemCount,

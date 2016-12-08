@@ -13,10 +13,11 @@ namespace MVCBiblioteka.Models
         [Required]
         [Display(Name = "Nazwa wydawnictwa: ")]
         public string name { get; set; }
+        [Display(Name = "Strona internetowa: ")]
         public string website { get; set; }
+        [Display(Name = "Opis: ")]
         public string description { get; set; }
         public int BookID { get; set; }
-        //public List<Book> Books { get; set; }
 
         public virtual ICollection<Book> Books { get; set; }
     }
