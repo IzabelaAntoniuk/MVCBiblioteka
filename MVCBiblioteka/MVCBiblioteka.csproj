@@ -296,6 +296,14 @@
     <Compile Include="Migrations\201612072330410_lends7.Designer.cs">
       <DependentUpon>201612072330410_lends7.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612080211010_upBook.cs" />
+    <Compile Include="Migrations\201612080211010_upBook.Designer.cs">
+      <DependentUpon>201612080211010_upBook.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612080250239_category.cs" />
+    <Compile Include="Migrations\201612080250239_category.Designer.cs">
+      <DependentUpon>201612080250239_category.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Author.cs" />
@@ -481,6 +489,12 @@
     <EmbeddedResource Include="Migrations\201612072330410_lends7.resx">
       <DependentUpon>201612072330410_lends7.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612080211010_upBook.resx">
+      <DependentUpon>201612080211010_upBook.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612080250239_category.resx">
+      <DependentUpon>201612080250239_category.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -496,7 +510,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>59637</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
