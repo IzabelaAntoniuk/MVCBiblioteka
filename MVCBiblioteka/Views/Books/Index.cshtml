@@ -38,7 +38,8 @@
             @Html.DisplayFor(modelItem => item.premiereDate)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.AuthorID)
+            @Html.DisplayFor(modelItem => item.Authors.FirstOrDefault().name)
+            @Html.DisplayFor(modelItem => item.Authors.FirstOrDefault().surname)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.state)

@@ -1,5 +1,6 @@
 ﻿@model MVCBiblioteka.Models.Book
 
+
 @{
     ViewBag.Title = "Szczegóły książki";
 }
@@ -30,7 +31,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.PublisherID)
+            @Html.DisplayFor(model => model.Publishers.FirstOrDefault().name)
         </dd>
 
         <dt>
@@ -38,7 +39,8 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.AuthorID)
+            @Html.DisplayFor(model => model.Authors.FirstOrDefault().allname)
+            @Html.DisplayFor(model => model.Authors.FirstOrDefault().surname)
         </dd>
 
         <dt>
@@ -46,7 +48,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.CategoryID)
+            @Html.DisplayFor(model => model.Category.FirstOrDefault().name)
         </dd>
 
         <dt>
