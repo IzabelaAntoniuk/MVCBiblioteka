@@ -10,107 +10,107 @@ using MVCBiblioteka.Models;
 
 namespace MVCBiblioteka.Controllers
 {
-    public class CategoriesController : Controller
+    public class PublishersController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Categories
+        // GET: Publishers
         public ActionResult Index()
         {
-            return View(db.Categories.ToList());
+            return View(db.Publishers.ToList());
         }
 
-        // GET: Categories/Details/5
+        // GET: Publishers/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Category category = db.Categories.Find(id);
-            if (category == null)
+            Publisher publisher = db.Publishers.Find(id);
+            if (publisher == null)
             {
                 return HttpNotFound();
             }
-            return View(category);
+            return View(publisher);
         }
 
-        // GET: Categories/Create
+        // GET: Publishers/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Categories/Create
+        // POST: Publishers/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CategoryID,name")] Category category)
+        public ActionResult Create([Bind(Include = "PublisherID,name,website,description,BookID")] Publisher publisher)
         {
             if (ModelState.IsValid)
             {
-                db.Categories.Add(category);
+                db.Publishers.Add(publisher);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(category);
+            return View(publisher);
         }
 
-        // GET: Categories/Edit/5
+        // GET: Publishers/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Category category = db.Categories.Find(id);
-            if (category == null)
+            Publisher publisher = db.Publishers.Find(id);
+            if (publisher == null)
             {
                 return HttpNotFound();
             }
-            return View(category);
+            return View(publisher);
         }
 
-        // POST: Categories/Edit/5
+        // POST: Publishers/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CategoryID,name")] Category category)
+        public ActionResult Edit([Bind(Include = "PublisherID,name,website,description,BookID")] Publisher publisher)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(category).State = EntityState.Modified;
+                db.Entry(publisher).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(category);
+            return View(publisher);
         }
 
-        // GET: Categories/Delete/5
+        // GET: Publishers/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Category category = db.Categories.Find(id);
-            if (category == null)
+            Publisher publisher = db.Publishers.Find(id);
+            if (publisher == null)
             {
                 return HttpNotFound();
             }
-            return View(category);
+            return View(publisher);
         }
 
-        // POST: Categories/Delete/5
+        // POST: Publishers/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Category category = db.Categories.Find(id);
-            db.Categories.Remove(category);
+            Publisher publisher = db.Publishers.Find(id);
+            db.Publishers.Remove(publisher);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -125,32 +125,31 @@ namespace MVCBiblioteka.Controllers
         }
 
         //
-        // GET: /Store/Browse?genre=Disco
+        // GET: /Publishers//Browse?publisher=PWN
 
-        public ActionResult Browse(string genre)
+        public ActionResult Browse(string publisher)
         {
-            // Retrieve Genre and its Associated Albums from database
-            var genreModel = db.Categories.Include("Books")
-                .Single(g => g.name == genre);
+            var publisherModel = db.Publishers.Include("Books")
+                .Single(p => p.name == publisher);
 
-            return View(genreModel);
+            return View(publisherModel);
         }
 
         //
-        // GET: /Store/Details/5
+        // GET: /Publishers/Details/5
 
         public ActionResult Details(int id)
         {
-            var book = db.Books.Find(id);
+            var publisher = db.Publishers.Find(id);
 
-            return View(book);
+            return View(publisher);
         }
 
-        public ActionResult CategoriesList()
+        public ActionResult publishersList()
         {
-            var genres = db.Categories.ToList();
+            var publisher = db.Publishers.ToList();
 
-            return View(genres);
+            return View(publisher);
         }
     }
 }

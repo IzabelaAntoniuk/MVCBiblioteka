@@ -13,12 +13,13 @@ namespace MVCBiblioteka.Controllers
         {
             IdentityManager im = new IdentityManager();
 
+            im.DeleteRole("Administrator");
+            im.DeleteRole("Czytelnik");
+            im.DeleteRole("Pracownik");
+
             im.CreateRole("Administrator");
             im.CreateRole("Czytelnik");
             im.CreateRole("Pracownik");
-
-            im.DeleteRole("Admin");
-            im.DeleteRole("User");
 
             return "ok";
         }
@@ -27,8 +28,8 @@ namespace MVCBiblioteka.Controllers
         {
             IdentityManager im = new IdentityManager();
 
-            im.AddUserToRoleByUsername("j.kowalski@gmail.com", "Admin");
-            im.AddUserToRoleByUsername("a.nowak@gmail.com", "User");
+            im.AddUserToRoleByUsername("j.kowalski@gmail.com", "Administrator");
+            //im.AddUserToRoleByUsername("a.nowak@gmail.com", "Użytkownik");
 
             return "OK";
         }
