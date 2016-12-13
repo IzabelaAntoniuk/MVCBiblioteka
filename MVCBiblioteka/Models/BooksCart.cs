@@ -97,27 +97,27 @@ namespace MVCBiblioteka.Models
         public int GetCount()
         {
             // Get the count of each item in the cart and sum them up
-            /* int? count = (from cartItems in storeDB.Carts
-                           where cartItems.CartID == BooksCartID
-                           select (int?)cartItems.Count).Sum();*/
+            int? count = (from cartItems in storeDB.Carts
+                          where cartItems.CartID == BooksCartID
+                          select (int?)cartItems.Count).Sum();
             // Return 0 if all entries are null
-            // return count ?? 0;
-            return 0;
+            return count ?? 0;
         }
         public decimal GetTotal()
         {
             // Multiply album price by count of that album to get 
             // the current price for each of those albums in the cart
             // sum all album price totals to get the cart total
-            decimal? total = (from cartItems in storeDB.Carts
+            int total = (from cartItems in storeDB.Carts
                               where cartItems.CartID == BooksCartID
-                              select (int?)cartItems.Count *
-                              cartItems.Book.AuthorID).Sum();
+                              select cartItems.Count).Sum();
+            //cartItems.Book.AuthorID).Sum();
 
-            return total ?? decimal.Zero;
+            return total;// ?? decimal.Zero;
         }
         public int CreateOrder(Order order)
         {
+            decimal orderTotal = 0;
 
             var cartItems = GetCartItems();
             // Iterate over the items in the cart, 
@@ -130,10 +130,8 @@ namespace MVCBiblioteka.Models
                     OrderID = order.OrderID,
                     lendDate = DateTime.Now.Date,
                     returnDate = DateTime.Now.AddDays(14),
-                    UserID = order.UserID,
-                // UnitPrice = item.Book.,
-                Quantity = item.Count
-                    
+                   // UnitPrice = item.Book.,
+                    Quantity = item.Count
                 };
                 // Set the order total of the shopping cart
                // orderTotal += (item.Count * item.Album.Price);
@@ -141,6 +139,8 @@ namespace MVCBiblioteka.Models
                 storeDB.OrderDetails.Add(orderDetail);
 
             }
+            // Set the order's total to the orderTotal count
+            //order.Total = orderTotal;
 
             // Save the order
             storeDB.SaveChanges();
