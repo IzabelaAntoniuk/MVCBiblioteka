@@ -29,10 +29,13 @@
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Lista książek", "Index", "Books")</li>
                     <li>@Html.ActionLink("Kategorie", "CategoriesList", "Categories")</li>
-                    <li>@Html.ActionLink("Autorzy", "Index", "Author")</li>
-                    <li>@Html.ActionLink("Wydawnictwa", "Index", "Publisher")</li>
+                    <li>@Html.ActionLink("Autorzy", "AuthorsList", "Authors")</li>
+                    <li>@Html.ActionLink("Wydawnictwa", "PublishersList", "Publishers")</li>
                     <li>@{Html.RenderAction("CartSummary", "BooksCart");}</li>
-                    <li><a href="@Url.Content("~/Users/")">| Panel admina </a></li>
+                    @if (User.IsInRole("Administrator"))
+                    {
+                        <li><a href="@Url.Content("~/Users/")">| Panel admina </a></li>
+                    }
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
