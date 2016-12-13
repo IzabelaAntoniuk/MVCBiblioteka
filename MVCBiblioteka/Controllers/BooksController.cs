@@ -16,9 +16,35 @@ namespace MVCBiblioteka.Controllers
 
         // GET: Books
         //[Authorize]
-        public ActionResult Index()
+        public ActionResult Index(string searchTitle, string searchISBN, string searchAuthor,string searchCategory)
         {
-            return View(db.Books.ToList());
+           
+            var books = db.Books.ToList();
+            // var authors= db.Authors.ToList();
+            //var authors = db.Books.Include("Authors")
+            //   .Single(g => g.Authors.FirstOrDefault().name == searchAuthor);
+            
+            if (!String.IsNullOrEmpty(searchTitle))
+            {
+                books = books.Where(g => g.title.Contains(searchTitle)).ToList();
+            }
+
+            if (!String.IsNullOrEmpty(searchISBN))
+            {
+                books = books.Where(g => g.ISBN.Contains(searchISBN)).ToList();
+            }
+
+            
+            //if (!String.IsNullOrEmpty(searchAuthor))
+            //{
+            //    //books = books.Where(s => s.title.Contains(searchTitle));
+            // //  books = books.Where(g => g.Authors.FirstOrDefault().name.Contains(searchAuthor)).ToList();
+            //  // authors=authors.Where(x => x.name.Contains(searchAuthor)).ToList();
+            //    return View(authors);
+            //}
+
+            return View(books);
+            // return View(db.Books.ToList());
         }
 
         // GET: Books/Details/5
@@ -64,6 +90,16 @@ namespace MVCBiblioteka.Controllers
         // GET: Books/Edit/5
         public ActionResult Edit(int? id)
         {
+
+            var CategoryList = new List<string>();
+
+            var CategoryQry = from d in db.Categories
+                              orderby d.name
+                              select d.name;
+
+            CategoryList.AddRange(CategoryQry.Distinct());
+            ViewBag.bookCategory = new SelectList(CategoryList);
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);

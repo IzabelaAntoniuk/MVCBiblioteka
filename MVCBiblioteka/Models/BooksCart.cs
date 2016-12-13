@@ -97,11 +97,12 @@ namespace MVCBiblioteka.Models
         public int GetCount()
         {
             // Get the count of each item in the cart and sum them up
-            int? count = (from cartItems in storeDB.Carts
-                          where cartItems.CartID == BooksCartID
-                          select (int?)cartItems.Count).Sum();
+            /* int? count = (from cartItems in storeDB.Carts
+                           where cartItems.CartID == BooksCartID
+                           select (int?)cartItems.Count).Sum();*/
             // Return 0 if all entries are null
-            return count ?? 0;
+            // return count ?? 0;
+            return 0;
         }
         public decimal GetTotal()
         {

@@ -35,7 +35,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.PublisherID, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.PublisherID, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Publishers.FirstOrDefault().name, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.PublisherID, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -43,7 +43,9 @@
         <div class="form-group">
             @Html.LabelFor(model => model.AuthorID, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.AuthorID, new { htmlAttributes = new { @class = "form-control" } })
+                @*@Html.EditorFor(model => model.AuthorID, new { htmlAttributes = new { @class = "form-control" } })*@
+                @Html.EditorFor(model => model.Authors.FirstOrDefault().name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Authors.FirstOrDefault().surname, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.AuthorID, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -51,8 +53,11 @@
         <div class="form-group">
             @Html.LabelFor(model => model.CategoryID, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.CategoryID, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownList("bookCategory", " ")
+                @*@Html.EditorFor(model => model.Category.FirstOrDefault().name, new { htmlAttributes = new { @class = "form-control" } })*@
                 @Html.ValidationMessageFor(model => model.CategoryID, "", new { @class = "text-danger" })
+
+                 
             </div>
         </div>
 
@@ -67,8 +72,18 @@
         <div class="form-group">
             @Html.LabelFor(model => model.state, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.state, new { htmlAttributes = new { @class = "form-control" } })
+                @*@Html.EditorFor(model => model.state, new { htmlAttributes = new { @class = "form-control" } })*@
+                @*@Html.ValidationMessageFor(model => model.state, "", new { @class = "text-danger" })*@
+                @Html.DropDownList("state ", new List<SelectListItem>
+     { new SelectListItem { Text = "książka w magazynie", Value = "1", Selected=true},
+       new SelectListItem { Text = "oczekuje na odbiór ", Value = "2"},
+       new SelectListItem { Text = "wypożyczona", Value = "3"}
+       }, " ")
                 @Html.ValidationMessageFor(model => model.state, "", new { @class = "text-danger" })
+
+
+
+                
             </div>
         </div>
 

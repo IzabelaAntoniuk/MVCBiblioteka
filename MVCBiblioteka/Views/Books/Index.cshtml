@@ -11,7 +11,18 @@
     @Html.ActionLink("Stwórz nową", "Create")
 </p>
 }
-
+<p>
+    @using (Html.BeginForm("Index", "Books", FormMethod.Get))
+    {
+    <p>
+        Tytuł: @Html.TextBox("SearchTitle") 
+        Autor: @Html.TextBox("SearchAuthor")
+        ISBN: @Html.TextBox("SearchISBN") 
+        <input type="submit" value="Szukaj" />
+    </p>
+    }
+    
+</p>
 <table class="table">
     <tr>
         <th>

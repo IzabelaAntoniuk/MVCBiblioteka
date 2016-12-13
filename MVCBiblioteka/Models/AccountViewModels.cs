@@ -58,7 +58,7 @@ namespace MVCBiblioteka.Models
         [Display(Name = "Hasło")]
         public string Password { get; set; }
 
-        [Display(Name = "Przypomnij mnie?")]
+        [Display(Name = "Zapamiętaj mnie")]
         public bool RememberMe { get; set; }
     }
 

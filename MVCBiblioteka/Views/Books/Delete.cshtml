@@ -31,7 +31,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.PublisherID)
+            @Html.DisplayFor(model => model.Publishers.FirstOrDefault().name)
         </dd>
 
         <dt>
@@ -39,7 +39,8 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.AuthorID)
+            @Html.DisplayFor(model => model.Authors.FirstOrDefault().name)
+            @Html.DisplayFor(model => model.Authors.FirstOrDefault().surname)
         </dd>
 
         <dt>
@@ -47,7 +48,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.CategoryID)
+            @Html.DisplayFor(model => model.Category.FirstOrDefault().name)
         </dd>
 
         <dt>
@@ -75,11 +76,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.LendID)
+           @* @Html.DisplayNameFor(model => model.LendID)*@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.LendID)
+          @*  @Html.DisplayFor(model => model.LendID)*@
         </dd>
 
     </dl>
