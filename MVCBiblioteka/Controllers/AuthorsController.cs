@@ -124,25 +124,12 @@ namespace MVCBiblioteka.Controllers
             base.Dispose(disposing);
         }
 
-        //
-        // GET: /Store/Browse?author=Jerzy
-
         public ActionResult Browse(string author)
         {
             var authorModel = db.Authors.Include("Books")
                 .Single(a => a.name == author);
 
             return View(authorModel);
-        }
-
-        //
-        // GET: /Store/Details/5
-
-        public ActionResult Details(int id)
-        {
-            var album = db.Books.Find(id);
-
-            return View(album);
         }
 
         public ActionResult AuthorsList()

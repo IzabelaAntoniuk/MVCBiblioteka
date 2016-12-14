@@ -29,7 +29,6 @@ namespace MVCBiblioteka.Controllers
             IdentityManager im = new IdentityManager();
 
             im.AddUserToRoleByUsername("j.kowalski@gmail.com", "Administrator");
-            //im.AddUserToRoleByUsername("a.nowak@gmail.com", "Użytkownik");
 
             return "OK";
         }

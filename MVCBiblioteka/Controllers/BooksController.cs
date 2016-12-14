@@ -20,9 +20,6 @@ namespace MVCBiblioteka.Controllers
         {
            
             var books = db.Books.ToList();
-            // var authors= db.Authors.ToList();
-            //var authors = db.Books.Include("Authors")
-            //   .Single(g => g.Authors.FirstOrDefault().name == searchAuthor);
             
             if (!String.IsNullOrEmpty(searchTitle))
             {
@@ -34,17 +31,7 @@ namespace MVCBiblioteka.Controllers
                 books = books.Where(g => g.ISBN.Contains(searchISBN)).ToList();
             }
 
-            
-            //if (!String.IsNullOrEmpty(searchAuthor))
-            //{
-            //    //books = books.Where(s => s.title.Contains(searchTitle));
-            // //  books = books.Where(g => g.Authors.FirstOrDefault().name.Contains(searchAuthor)).ToList();
-            //  // authors=authors.Where(x => x.name.Contains(searchAuthor)).ToList();
-            //    return View(authors);
-            //}
-
             return View(books);
-            // return View(db.Books.ToList());
         }
 
         // GET: Books/Details/5

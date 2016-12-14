@@ -14,15 +14,11 @@ namespace MVCBiblioteka.Controllers
         ApplicationDbContext storeDB = new ApplicationDbContext();
         const string PromoCode = "HURA";
 
-        //
-        // GET: /Checkout/AddressAndPayment
         public ActionResult AddressAndPayment()
         {
             return View();
         }
 
-        //
-        // POST: /Checkout/AddressAndPayment
         [HttpPost]
         public ActionResult AddressAndPayment(FormCollection values)
         {
@@ -42,10 +38,9 @@ namespace MVCBiblioteka.Controllers
                     order.OrderDate = DateTime.Now;
                     order.Username = User.Identity.Name;
 
-                    //Save Order
                     storeDB.Orders.Add(order);
                     storeDB.SaveChanges();
-                    //Process the order
+
                     var cart = BooksCart.GetCart(this.HttpContext);
                     cart.CreateOrder(order);
 
@@ -55,16 +50,13 @@ namespace MVCBiblioteka.Controllers
             }
             catch
             {
-                //Invalid - redisplay with errors
+
                 return View(order);
             }
         }
 
-        //
-        // GET: /Checkout/Complete
         public ActionResult Complete(int id)
         {
-            // Validate customer owns this order
             bool isValid = storeDB.Orders.Any(
                 o => o.OrderID == id &&
                 o.Username == User.Identity.Name);

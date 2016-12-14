@@ -123,5 +123,11 @@ namespace MVCBiblioteka.Controllers
             }
             base.Dispose(disposing);
         }
+
+        // GET: Users
+        public ActionResult Admin()
+        {
+            return View();
+        }
     }
 }

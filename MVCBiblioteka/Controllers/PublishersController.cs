@@ -135,16 +135,6 @@ namespace MVCBiblioteka.Controllers
             return View(publisherModel);
         }
 
-        //
-        // GET: /Publishers/Details/5
-
-        public ActionResult Details(int id)
-        {
-            var publisher = db.Publishers.Find(id);
-
-            return View(publisher);
-        }
-
         public ActionResult publishersList()
         {
             var publisher = db.Publishers.ToList();

@@ -10,8 +10,6 @@ namespace MVCBiblioteka.Controllers
     public class HomeController : Controller
     {
         ApplicationDbContext libraryDB = new ApplicationDbContext();
-        //
-        // GET: /Store/
 
         public ActionResult Index()
         {
@@ -20,20 +18,13 @@ namespace MVCBiblioteka.Controllers
             return View(genres);
         }
 
-        //
-        // GET: /Store/Browse?genre=Disco
-
         public ActionResult Browse(string genre)
         {
-            // Retrieve Genre and its Associated Albums from database
             var genreModel = libraryDB.Categories.Include("Books")
                 .Single(g => g.name == genre);
 
             return View(genreModel);
         }
-
-        //
-        // GET: /Store/Details/5
 
         public ActionResult Details(int id)
         {
@@ -41,9 +32,6 @@ namespace MVCBiblioteka.Controllers
 
             return View(album);
         }
-
-        //
-        // GET: /Store/GenreMenu
 
         [ChildActionOnly]
         public ActionResult GenreMenu()

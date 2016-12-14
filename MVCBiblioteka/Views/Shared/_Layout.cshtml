@@ -34,17 +34,15 @@
                     <li>@{Html.RenderAction("CartSummary", "BooksCart");}</li>
                     @if (User.IsInRole("Administrator"))
                     {
-                        <li><a href="@Url.Content("~/Users/")">| Panel admina </a></li>
+                        <li><a href="@Url.Content("~/Users/Admin/")">| Panel admina </a></li>
                     }
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
         </div>
-        @*@{Html.RenderAction("GenreMenu", "Home");}*@
         <div class="container body-content">
             @RenderBody()
-            @*<hr />*@
             <footer>
                 @*<p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>*@
             </footer>

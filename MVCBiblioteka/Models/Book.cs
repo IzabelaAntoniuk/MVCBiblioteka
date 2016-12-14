@@ -37,5 +37,6 @@ namespace MVCBiblioteka.Models
         public virtual ICollection<Publisher> Publishers { get; set; }
         public virtual ICollection<Author> Authors { get; set; }
         public virtual ICollection<Category> Category { get; set; }
+        public virtual List<OrderDetail> OrderDetails { get; set; }
     }
 }
