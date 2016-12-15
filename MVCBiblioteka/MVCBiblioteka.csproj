@@ -350,6 +350,10 @@
     <Compile Include="Migrations\201612140016393_bookscart.Designer.cs">
       <DependentUpon>201612140016393_bookscart.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612151145327_eh.cs" />
+    <Compile Include="Migrations\201612151145327_eh.Designer.cs">
+      <DependentUpon>201612151145327_eh.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Author.cs" />
@@ -589,6 +593,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201612140016393_bookscart.resx">
       <DependentUpon>201612140016393_bookscart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612151145327_eh.resx">
+      <DependentUpon>201612151145327_eh.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

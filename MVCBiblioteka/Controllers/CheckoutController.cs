@@ -3,6 +3,7 @@ using MVCBiblioteka.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -34,7 +35,12 @@ namespace MVCBiblioteka.Controllers
                 }
                 else
                 {
-                    order.UserID = User.Identity.GetUserId();
+                    var userIdd = User.Identity.GetUserId();
+                    if (userIdd == null)
+                    {
+                        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                    }
+                    order.UserID = userIdd;
                     order.OrderDate = DateTime.Now;
                     order.Username = User.Identity.Name;
 

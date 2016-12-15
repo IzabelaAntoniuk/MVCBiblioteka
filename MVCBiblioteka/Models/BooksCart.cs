@@ -130,8 +130,10 @@ namespace MVCBiblioteka.Models
                     OrderID = order.OrderID,
                     lendDate = DateTime.Now.Date,
                     returnDate = DateTime.Now.AddDays(14),
-                   // UnitPrice = item.Book.,
-                    Quantity = item.Count
+                    // UnitPrice = item.Book.,
+                    Quantity = item.Count,
+                    UserID = order.UserID,
+                    username = order.Username
                 };
                 // Set the order total of the shopping cart
                // orderTotal += (item.Count * item.Album.Price);

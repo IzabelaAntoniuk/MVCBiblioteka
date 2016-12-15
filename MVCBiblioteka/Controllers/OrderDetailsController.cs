@@ -50,7 +50,7 @@ namespace MVCBiblioteka.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "OrderDetailID,OrderID,BookID,UserID,Quantity,lendDate,returnDate")] OrderDetail orderDetail)
+        public ActionResult Create([Bind(Include = "OrderDetailID,OrderID,BookID,Quantity,UserID,lendDate,returnDate,username")] OrderDetail orderDetail)
         {
             if (ModelState.IsValid)
             {
